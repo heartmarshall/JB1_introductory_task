@@ -40,7 +40,9 @@ with open(input_file, 'r') as f:
 answer = []
 for vertex in range(N):
     dijkstra_result = dijkstra(adj_list, vertex)
+    # удаляем недоступные вершины
     available_vertices = {vertex: distance for vertex, distance in dijkstra_result.items() if distance != INF}
+    # смотрим какие вершины достижимы из заданных множеств
     s1_tmp = set(available_vertices.keys()).intersection(s1)
     s2_tmp = set(available_vertices.keys()).intersection(s2)
     if s1_tmp and s2_tmp:
